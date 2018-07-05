@@ -5,7 +5,6 @@ const pwd = process.cwd();
 const pkgFile = resolve(pwd,'..', '..','..', 'package.json');
 const pkgExists = existsSync(pkgFile);
 
-console.info('SETTING UP', pkgFile, pkgExists);
 if (!pkgExists) {
     console.info('no package.json found');
     process.exit(0);
