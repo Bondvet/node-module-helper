@@ -4,11 +4,11 @@ const { writeFileSync } = require('fs');
 const pwd = process.cwd();
 const pkgDir = resolve(__dirname, '..')
 
+console.info('SETTING UP', pwd, pkgDir)
 if (pwd === pkgDir) {
     console.info('in package directory – nothing to do here');
     process.exit(0);
 }
-console.info('SETTING UP', pwd, pkgDir)
 
 const pkgFile = resolve(pwd, 'package.json');
 const config = require(pkgFile);
