@@ -39,5 +39,6 @@ config.nodemonConfig = {
     delay: '500',
     watch: 'src',
 };
+config.scripts = scripts;
 
 writeFileSync(pkgFile, JSON.stringify(config, null, 2));
