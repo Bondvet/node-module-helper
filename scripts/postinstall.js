@@ -17,7 +17,7 @@ const scripts = config.scripts || {};
 function addScript(scripts, name, cmd) {
     const commands = [cmd];
 
-    if (scripts[name]) {
+    if (scripts[name] && scripts[name] !== cmd) {
         commands.unshift(scripts[name]);
     }
 
