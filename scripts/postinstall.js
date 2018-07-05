@@ -35,6 +35,7 @@ addScript(
 addScript(scripts, 'build', 'babel src --out-dir dist --copy-files');
 addScript(scripts, 'build:watch', 'nodemon');
 addScript(scripts, 'publish', '(cd dist && yarn publish)');
+addScript(scripts, 'prepublish', 'yarn build');
 
 config.nodemonConfig = {
   exec: 'yarn build',
