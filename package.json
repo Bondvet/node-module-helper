@@ -6,7 +6,7 @@
   "author": "Daniel Holzmann <d@velopment.at>",
   "license": "MIT",
   "private": false,
-  "devDependencies": {
+  "dependencies": {
     "babel-cli": "^6",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
