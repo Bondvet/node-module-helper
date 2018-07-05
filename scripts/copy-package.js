@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { resolve } = require('path');
 const { writeFileSync } = require('fs');
 const { omit } = require('lodash');
