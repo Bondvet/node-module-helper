@@ -17,7 +17,7 @@
     "nodemon": "^1.17.5"
   },
   "bin": {
-    "bondvet-pre-publish": "scripts/copy-package.js"
+    "bondvet-copy-package": "scripts/copy-package.js"
   },
   "scripts": {
     "postinstall": "node scripts/postinstall.js"
