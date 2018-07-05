@@ -1,0 +1,25 @@
+{
+  "name": "@bondvet/node-module-helper",
+  "version": "0.0.1",
+  "description": "Some helper scripts and dev-dependencies for publishing a node module to NPM",
+  "repository": "https://github.com/Bondvet/node-module-helper.git",
+  "author": "Daniel Holzmann <d@velopment.at>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "babel-cli": "^6",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.5.5",
+    "babel-preset-react": "^6.24.1",
+    "lodash": "^4.17.10",
+    "nodemon": "^1.17.5"
+  },
+  "bin": {
+    "bondvet-pre-publish": "scripts/copy-package.js"
+  },
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js"
+  }
+}
