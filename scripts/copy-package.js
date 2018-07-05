@@ -11,5 +11,5 @@ const output = resolve(pwd, 'dist', 'package.json');
 
 writeFileSync(
     output,
-    JSON.stringify(omit(config, 'devDependencies', 'scripts'), null, 2),
+    JSON.stringify(omit(config, 'devDependencies', 'scripts', 'nodemonConfig'), null, 2),
 );
