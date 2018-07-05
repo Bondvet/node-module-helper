@@ -1,16 +1,16 @@
 const { resolve } = require('path');
-const { writeFileSync } = require('fs');
+const { writeFileSync, existsSync } = require('fs');
 
 const pwd = process.cwd();
-const pkgDir = resolve(__dirname, '..')
+const pkgFile = resolve(pwd,'..', '..','..', 'package.json');
+const pkgExists = existsSync(pkgFile);
 
-console.info('SETTING UP', pwd, pkgDir)
-if (pwd === pkgDir) {
-    console.info('in package directory – nothing to do here');
+console.info('SETTING UP', pkgFile, pkgExists);
+if (!pkgExists) {
+    console.info('no package.json found');
     process.exit(0);
 }
 
-const pkgFile = resolve(pwd, 'package.json');
 const config = require(pkgFile);
 
 const scripts = config.scripts || {};
