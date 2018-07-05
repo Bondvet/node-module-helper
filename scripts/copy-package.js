@@ -2,7 +2,7 @@
 
 const { resolve } = require('path');
 const { writeFileSync } = require('fs');
-const { omit } = require('lodash');
+const { omit, set } = require('lodash');
 
 const pwd = process.cwd();
 const config = require(resolve(pwd, 'package.json'));
@@ -10,6 +10,14 @@ const config = require(resolve(pwd, 'package.json'));
 const output = resolve(pwd, 'dist', 'package.json');
 
 writeFileSync(
-    output,
-    JSON.stringify(omit(config, 'devDependencies', 'scripts', 'nodemonConfig'), null, 2),
+  output,
+  JSON.stringify(
+    set(
+      omit(config, 'devDependencies', 'scripts', 'nodemonConfig'),
+      'private',
+      false,
+    ),
+    null,
+    2,
+  ),
 );
