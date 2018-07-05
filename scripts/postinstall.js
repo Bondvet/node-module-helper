@@ -8,6 +8,7 @@ if (pwd === pkgDir) {
     console.info('in package directory – nothing to do here');
     process.exit(0);
 }
+console.info('SETTING UP', pwd, pkgDir)
 
 const pkgFile = resolve(pwd, 'package.json');
 const config = require(pkgFile);
