@@ -1,6 +1,7 @@
 const { resolve } = require('path');
 const { writeFileSync, existsSync } = require('fs');
 const addBabelConfig = require('../lib/addBabelConfig');
+const addNvmRc = require('../lib/addNvmRc');
 
 const pwd = process.cwd();
 const pkdDir = resolve(pwd, '..', '..', '..');
@@ -47,3 +48,4 @@ config.scripts = scripts;
 writeFileSync(pkgFile, JSON.stringify(config, null, 2));
 
 addBabelConfig(pkdDir);
+addNvmRc(pkdDir);
