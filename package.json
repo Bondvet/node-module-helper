@@ -14,7 +14,7 @@
     "babel-preset-env": "^1.5.5",
     "babel-preset-react": "^6.24.1",
     "lodash": "^4.17.10",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.18.7"
   },
   "bin": {
     "bondvet-copy-package": "scripts/copy-package.js"
