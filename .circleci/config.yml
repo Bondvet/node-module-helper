@@ -19,9 +19,9 @@ commands:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - app-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-dependencies-{{ checksum "yarn.lock" }}
+            - dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "yarn.lock" }}
             # fallback to using the latest cache if no exact match is found
-            - app-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-dependencies-
+            - dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-
 
       - run:
           name: authenticate with npmjs.org
@@ -32,7 +32,7 @@ commands:
       - save_cache:
           paths:
             - node_modules
-          key: app-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-dependencies-{{ checksum "yarn.lock" }}
+          key: dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "yarn.lock" }}
 
       - persist_to_workspace:
           root: ~/repo
