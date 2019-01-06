@@ -43,8 +43,7 @@ commands:
     steps:
       - run:
           name: build and deploy
-          command: |
-            yarn build && mv .npmrc dist && (cd dist && npm publish)
+          command: npm publish
 
 jobs:
   deploy:
