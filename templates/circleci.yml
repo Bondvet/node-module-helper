@@ -44,7 +44,7 @@ commands:
       - run:
           name: build and deploy
           command: |
-            npm run publish
+            yarn build && mv .npmrc dist && (cd dist && npm publish)
 
 jobs:
   deploy:
@@ -63,9 +63,7 @@ workflows:
     jobs:
       - deploy:
           filters:
-            branches:
-              only:
-                - master
             tags:
-              only:
-                - /^v.*/
+              only: /^v.*/
+            branches:
+              ignore: /.*/
