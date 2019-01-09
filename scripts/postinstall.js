@@ -31,7 +31,7 @@ function addScript(scripts, name, cmd) {
 addScript(
   scripts,
   'prebuild',
-  'rm -Rf dist && mkdir -p dist && bondvet-copy-package',
+  'rm -Rf dist/* && mkdir -p dist && bondvet-copy-package',
 );
 
 addScript(scripts, 'build', 'babel src --out-dir dist --copy-files');
