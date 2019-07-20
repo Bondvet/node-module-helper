@@ -8,7 +8,7 @@ defaults: &defaults
   working_directory: ~/repo
 
   docker:
-    - image: bondvet/circle-ci:8.11.2
+    - image: bondvet/circle-ci:10.16.0
 
 commands:
   deps:
@@ -19,9 +19,9 @@ commands:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "yarn.lock" }}
+            - dependencies-10.16.0-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "yarn.lock" }}
             # fallback to using the latest cache if no exact match is found
-            - dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-
+            - dependencies-10.16.0-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-
 
       - run:
           name: authenticate with npmjs.org
@@ -32,7 +32,7 @@ commands:
       - save_cache:
           paths:
             - node_modules
-          key: dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "yarn.lock" }}
+          key: dependencies-10.16.0-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-{{ checksum "yarn.lock" }}
 
       - persist_to_workspace:
           root: ~/repo
