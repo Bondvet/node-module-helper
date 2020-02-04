@@ -34,7 +34,7 @@ addScript(scripts, 'prebuild', 'rm -rf build/* && mkdir -p build');
 addScript(
     scripts,
     'postbuild',
-    'rm -rf dist/* && mkdir -p dist && bondvet-copy-package && cp -r build/* dist/',
+    'rm -rf dist/* && mkdir -p dist && bondvet-copy-package && mv build/* dist/',
 );
 
 addScript(scripts, 'build', 'babel src --out-dir build --copy-files');
