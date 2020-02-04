@@ -9,8 +9,8 @@ const pkgFile = resolve(pkdDir, 'package.json');
 const pkgExists = existsSync(pkgFile);
 
 if (!pkgExists) {
-  console.info('no package.json found');
-  process.exit(0);
+    console.info('no package.json found');
+    process.exit(0);
 }
 
 const config = require(pkgFile);
@@ -18,31 +18,32 @@ const config = require(pkgFile);
 const scripts = config.scripts || {};
 
 function addScript(scripts, name, cmd) {
-  const commands = [cmd];
+    const commands = [cmd];
 
-  if (scripts[name] && scripts[name] !== cmd) {
-    commands.unshift(scripts[name]);
-  }
+    if (scripts[name] && scripts[name] !== cmd) {
+        commands.unshift(scripts[name]);
+    }
 
-  scripts[name] = commands.join(' && ');
+    scripts[name] = commands.join(' && ');
 }
 
+addScript(scripts, 'prebuild', 'rm -rf build/* && mkdir -p build');
 addScript(
-  scripts,
-  'prebuild',
-  'rm -Rf dist && mkdir -p dist && bondvet-copy-package',
+    scripts,
+    'postbuild',
+    'rm -rf dist/* && mkdir -p dist && bondvet-copy-package && cp -r build/* dist/',
 );
 
-addScript(scripts, 'build', 'babel src --out-dir dist --copy-files');
+addScript(scripts, 'build', 'babel src --out-dir build --copy-files');
 addScript(scripts, 'build:watch', 'nodemon');
 addScript(scripts, 'publish', '(cd dist && yarn publish)');
 addScript(scripts, 'prepublish', 'yarn build');
 addScript(scripts, 'dev', 'yarn build:watch');
 
 config.nodemonConfig = {
-  exec: 'yarn build',
-  delay: '500',
-  watch: 'src',
+    exec: 'yarn build',
+    delay: '500',
+    watch: 'src',
 };
 config.scripts = scripts;
 
